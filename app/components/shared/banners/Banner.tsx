@@ -9,7 +9,7 @@ const Banner = () => {
         <section className="bg-transparent px-4  pb-20">
             <div className="container">
 
-                <div className="flex flex-col items-center justify-center text-center">
+                <div className="flex flex-col h-[50%] items-center justify-center text-center">
 
                     <h1
                         className="

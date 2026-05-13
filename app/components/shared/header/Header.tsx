@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-    { title: "Services", path: "/services" },
+    { title: "Check-list", path: "/checklist" },
     { title: "Portfolio", path: "/portfolio" },
     { title: "Contact", path: "/contact" },
 ];
@@ -52,18 +52,11 @@ const Header = () => {
                                 <Link
                                     key={item.path}
                                     href={item.path}
-                                    className="
-                                    relative
-                                    px-5 py-2
-                                    rounded-full
-                                    text-sm
-                                    font-medium
-                                    text-white/70
-                                    transition-all
-                                    duration-300
-                                    hover:text-white
-                                    hover:bg-white/10
-                                "
+                                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all
+                                        duration-300  ${isActive 
+                                        ? "text-white bg-linear-to-br from-[#525252] to-[#171717]" 
+                                        : "text-white/70 hover:text-white hover:bg-white/5"
+                                    }`}
                                 >
                                     {item.title}
                                 </Link>
