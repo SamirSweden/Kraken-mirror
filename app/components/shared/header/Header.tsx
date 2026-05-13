@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
     { title: "Check-list", path: "/checklist" },
-    { title: "Trade", path: "/trade" },
+    { title: "Invest", path: "/invest" },
     { title: "Contact", path: "/contact" },
 ];
 
