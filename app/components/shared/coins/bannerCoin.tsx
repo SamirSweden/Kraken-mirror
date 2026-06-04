@@ -11,7 +11,7 @@ interface Coin {
     symbol: string;
     image: string;
     price_change_percentage_24h: number;
-    [key: string]: any;
+    [key: string]: string | number;
 }
 
 function BannerCoin() {
@@ -62,7 +62,7 @@ function BannerCoin() {
 
     return (
         <>
-        <section className=" px-0 bg-black " style={{padding:'60px'}}>
+        <section className=" px-0 bg-black ">
             <div className="max-w-6xl mx-auto px-6 w-full h-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {visibleCoins.map((coin: Coin) => (
@@ -70,11 +70,11 @@ function BannerCoin() {
                             className="
                             relative
                             overflow-hidden
-                            rounded-[32px]
+                            rounded-4xl
                             border border-white/10
                             bg-black
-                            p-10
-                            min-h-[260px]
+                            p-4 sm:p-6lg:p-10
+                            min-h-[220px] sm:min-h-[260px]
                             hover:border-gray-600
                             transition-all
                             shadow-[inset_4px_4px_50px_0_hsla(0,0%,100%,.15)]
