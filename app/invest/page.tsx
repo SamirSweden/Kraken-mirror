@@ -1,10 +1,9 @@
+import Capital from "@/app/components/Capital";
 
 const Invest = () => {
     return (
         <>
-            <section className={'bg-black h-screen'}>
-                invest soon
-            </section>
+            <Capital/>
         </>
     )
 }

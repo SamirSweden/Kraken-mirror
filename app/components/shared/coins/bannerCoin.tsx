@@ -58,7 +58,7 @@ function BannerCoin() {
     }
 
 
-    const visibleCoins = showAll ? coins : coins.slice(0,6);
+    const visibleCoins = showAll ? coins : coins.slice(0,4);
 
     return (
         <>

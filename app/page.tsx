@@ -1,5 +1,6 @@
 import Header from "@/app/components/shared/header/Header";
 import Banner from "@/app/components/shared/banners/Banner";
+import Install from "@/app/components/shared/UI/Install";
 
 
 async function getPrices() {
@@ -28,6 +29,7 @@ export default async  function Home() {
                 <Banner />
             </div>
 
+            <Install />
 
 
         </main>
