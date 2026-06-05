@@ -37,7 +37,7 @@ function BannerCoin() {
 
     if (loading) {
         return (
-            <section className={'h-screen px-0  bg-transparent'}>
+            <section className={'h-screen px-0   bg-transparent'}>
                 <div className="max-w-6xl mx-auto px-6 w-full h-full">
                     <div className="flex items-center justify-center h-full">
                         <h1 className="text-center text-white py-20 text-3xl ">

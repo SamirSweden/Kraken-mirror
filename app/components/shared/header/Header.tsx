@@ -17,7 +17,7 @@ const Header = () => {
 
 
     return (
-        <header className="bg-black w-full z-50 px-4 py-4 sticky top-0 left-0 shadow-md z-50 ">
+        <header className="bg-black w-full z-50 px-4    shadow-md  ">
             <div className="max-w-6xl px-4  mx-auto w-full h-full">
 
                 <div
