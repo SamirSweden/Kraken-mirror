@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -34,4 +37,29 @@ html , body {
 html::-webkit-scrollbar ,
 body::-webkit-scrollbar{
   display: none;
+}
+
+
+
+@layer base {
+  ::selection {
+    @apply bg-white text-black;
+  }
+}
+
+/* 2. Ваши кастомные компоненты остаются здесь */
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto px-4 w-full h-full;
+  }
+}
+
+::selection{
+  background: "#ffffff";
+  color: "#000000";
+}
+
+::-moz-selection{
+  background: "#ffffff";
+  color: "#000000";
 }
