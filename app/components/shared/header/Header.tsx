@@ -16,7 +16,7 @@ const Header = () => {
 
 
     return (
-        <header className="bg-black w-full z-50 px-4    shadow-md  ">
+        <header className="bg-black w-full z-50 px-4    shadow-md  max-[500px]:mt-3">
             <div className="max-w-6xl px-4  mx-auto w-full h-full">
 
                 <div
@@ -53,7 +53,7 @@ const Header = () => {
                                     href={item.path}
                                     className={`px-5 py-2 rounded-full text-sm font-medium transition-all
                                         duration-300  ${isActive 
-                                        ? "text-white bg-linear-to-br from-[#111] to-[#171717]"
+                                        ? "text-white bg-white/10 backdrop-blur-xs"
                                         : "text-white/70 hover:text-white hover:bg-white/5"
                                     }`}
                                 >
@@ -91,7 +91,6 @@ const Header = () => {
                     </div>
                 </div>
 
-                {/* Mobile Menu */}
                 <div
                     className={`
                         md:hidden
@@ -100,7 +99,7 @@ const Header = () => {
                         duration-500
                         ${
                         isOpen
-                            ? "max-h-[500px] opacity-100 mt-3"
+                            ? "max-h-[500px] bg-transparent backdrop-blur-3xl mt-3"
                             : "max-h-0 opacity-0"
                     }
                     `}

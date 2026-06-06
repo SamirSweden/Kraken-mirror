@@ -24,7 +24,7 @@ export default function HeroSection({
       <section className="bg-black py-12 md:py-20">
         <div className="container flex flex-col-reverse md:flex-row items-center justify-between gap-10">
           <div className="flex flex-col w-full space-y-6 max-w-xl ">
-            <h1 className="font-mono tracking-tight text-4xl md:text-5xl  text-white ">
+            <h1 className="font-mono tracking-tight text-4xl md:text-5xl  text-white  ">
               {title}
             </h1>
             <p className="text-lg text-white leading-relaxed">{description}</p>
