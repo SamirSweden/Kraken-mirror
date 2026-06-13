@@ -72,7 +72,7 @@ export default function Chat(){
                 absolute bottom-4.5 left-1/2 w-full -translate-x-1/2 max-w-2xl">
                 <input 
                     className="flex-1 border border-gray-600 rounded-2xl w-full outline-none py-4 px-5 text-white wrap-break-word"
-                    placeholder="write a message"
+                    placeholder="write  message.."
                     value={text}
                     onChange={e => setText(e.target.value)}
                     onKeyDown={(e) => {
