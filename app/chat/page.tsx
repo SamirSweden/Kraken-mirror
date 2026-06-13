@@ -1,71 +1,100 @@
-'use client'
+"use client"
 
-import {useState,useEffect} from "react";
+import { Client } from "@stomp/stompjs"
+import { SendHorizontal } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 
-export default  function Chat() {
-    const [author , setAuthor] = useState("");
-    const [text , setText] = useState("");
-    const [message , setMessage] = useState<any[]>([]);
+type Message = {
+    text: string
+}
 
-    useEffect(() => {
-        const interval = setInterval(async () => {
-           const res = await fetch("/api/chat/messages");
+export default function Chat(){
 
-           const data = await res.json();
-           setMessage(data);
-        } , 1000);
+   const [messages , setMessages] = useState<Message[]>([])
+   const [text , setText] = useState('')
+   const [typing , setTyping] = useState(false)
 
-        return () => clearInterval(interval)
-    },[])
+   const clientRef = useRef<Client | null>(null)
 
-    const send = async () => {
-        if(!text.trim()) return;
-        if(!author.trim()) return;
+   useEffect(() => {
+    const client = new Client({
+        brokerURL: "ws://localhost:8080/ws",
+        reconnectDelay:5000
+    })
 
-        await fetch("/api/chat/send", {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json",
-            },
-            body: JSON.stringify({
-                text,
-                author
+        client.onConnect = () => {
+            client.subscribe('/topic/messages', msg => {
+                setMessages(prev => [
+                    ...prev,
+                    JSON.parse(msg.body)
+                ])
             })
-        })
 
-        setText("")
-    }
+            client.subscribe('/topic/typing', () => {
+                setTyping(true)
+
+                setTimeout(() => {
+                    setTyping(false)
+                },1000)
+            })
+        }
+
+        client.activate()
+        clientRef.current = client
+
+        return () => void client.deactivate()
+   },[])
+
+
+   function send(){
+    if(!text.trim()) return;
+
+    clientRef.current?.publish({
+        destination: "/app/chat.send",
+        body: JSON.stringify({text})
+    })
+
+    setText('')
+   }
+
     return (
-        <>
-            <section>
-                <div className="p-4">
-                    <input
-                        type="text"
-                        placeholder={"name"}
-                        value={author}
-                        onChange={(e) => setAuthor(e.target.value)}
-                    />
+        <div style={{ backgroundColor: '#000', minHeight: '100vh' }}>
+           <div className="max-w-2xl mx-auto p-4">
+               <div className="space-y-2 mb-4">
+                    {messages.map((msg , i) => (
+                        <div key={i} style={{ backgroundColor: '#111', borderRadius: '8px', padding: '12px' }}>
+                            <p style={{ color: '#fff' }}>{msg.text}</p>
+                        </div>
+                    ))}
+               </div>
 
-                    <div className={'h-[400px] overflow-auto border my-4 p-4'}>
-                        {message.map((msg) => (
-                            <div key={msg.id}>
-                                <b>{msg.author}</b>: {msg.text}
-                            </div>
-                        ))}
-                    </div>
+               <div className="flex flex-col sm:flex-row  gap-3 items-center
+                absolute bottom-4.5 left-1/2 w-full -translate-x-1/2 max-w-2xl">
+                <input 
+                    className="flex-1 border border-gray-600 rounded-2xl w-full outline-none py-4 px-5 text-white wrap-break-word"
+                    placeholder="write a message"
+                    value={text}
+                    onChange={e => setText(e.target.value)}
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            e.preventDefault()
+                            send()
+                        }
+                    }}
+               />
 
-                    <div className={'bottom_content'}>
-                        <input
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            placeholder="write a message"
-                        />
-                        <button onClick={send}>
-                            send
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </>
+               <button
+                    
+                    onClick={send}
+               >
+                   <SendHorizontal size={40} className="text-white max-[440px]:text-lg" />
+               </button>
+               </div>
+
+               {typing && (
+                    <p style={{ color: '#888', marginTop: '8px', fontSize: '14px' }}>Печатает....</p>
+               )}
+           </div>
+        </div>
     )
 }

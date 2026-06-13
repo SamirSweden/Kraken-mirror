@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import {usePathname} from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -13,7 +14,7 @@ const navItems = [
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname()
-
+    const router = useRouter()
 
     return (
         <header className="bg-black w-full z-50 px-4    shadow-md  max-[500px]:mt-3">
@@ -65,10 +66,12 @@ const Header = () => {
 
                     <div className="flex items-center gap-3">
 
-                        <button className={`
+                        <button  
+                            onClick={() => router.push('/chat')}
+                        className={`
                             bg-white text-black font-mono py-2 px-6 rounded-2xl cursor-pointer max-[430px]:hidden
                         `}>
-                            mnt
+                            chat
                         </button>
 
                         <button
