@@ -1,12 +1,14 @@
-import SXHeader from "@/app/components/shared/header/navbar/SXHeader";
 import Profile from "@/app/components/Profile";
+import Header from "@/app/components/shared/header/Header";
 
 
 export default function Home() {
     return (
         <>
-            <SXHeader />
-            <Profile />
+            <main className={'bg-black min-h-screen '}>
+                <Header/>
+                <Profile />
+            </main>
         </>
     )
 }

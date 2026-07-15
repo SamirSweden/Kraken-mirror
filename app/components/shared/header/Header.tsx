@@ -18,7 +18,7 @@ const Header = () => {
 
     return (
         <header className="bg-black w-full z-50 px-4    shadow-md  max-[500px]:mt-3">
-            <div className="max-w-6xl px-4  mx-auto w-full h-full">
+            <div className="max-w-7xl px-4  mx-auto w-full h-full">
 
                 <div
                     className="
@@ -28,8 +28,7 @@ const Header = () => {
                         backdrop-blur-xl
                         max-[500px]:bg-black
                         shadow-[0_8px_32px_rgba(0,0,0,0.37)]
-                        max-[500px]:border
-                        max-[500px]:border-gray-700
+                        max-[500px]:border border-gray-600
                     "
                 >
                     <Link
@@ -67,11 +66,11 @@ const Header = () => {
                     <div className="flex items-center gap-3">
 
                         <button  
-                            onClick={() => router.push('/chat')}
+                            onClick={() => router.push('/sx')}
                         className={`
-                            bg-white text-black font-mono py-2 px-6 rounded-2xl cursor-pointer max-[430px]:hidden
+                            bg-[#15181f] text-white font-mono py-2 px-6 rounded-2xl cursor-pointer max-[430px]:hidden
                         `}>
-                            chat
+                            sx
                         </button>
 
                         <button
