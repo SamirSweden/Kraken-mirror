@@ -1,12 +1,17 @@
 'use client'
 
+import Image from "next/image";
+
+import RyanImg from "@/app/assets/ryan.jpg"
+
+
 const Profile = () => {
     return (
         <>
             <section className={'py-10'}>
                 <div className="container">
                     <div className="grid grid-cols-1 md:grid-cols-[70%_30%] gap-4 rounded-2xl">
-                        <div className="bg-zinc-900 py-4 px-5 rounded-xl">
+                        <div className="bg-[#111] py-4 px-5 rounded-xl">
                             <span className={'text-white text-lg font-semibold'}>s.azimovs</span>
                             <div className="followers mt-3 mb-4 flex items-center gap-5">
                                 <div className={'flex items-center gap-2'}>
@@ -32,8 +37,15 @@ const Profile = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className="photo">
-                            photo
+                        <div className="photo w-full">
+                            <Image
+                                src={RyanImg}
+                                alt={'ryan'}
+                                width={'260'}
+                                height={'100'}
+
+                                className={'rounded-3xl  max-[425px]:w-full'}
+                            />
                         </div>
                     </div>
                 </div>
