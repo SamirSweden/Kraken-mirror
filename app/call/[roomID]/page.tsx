@@ -58,7 +58,7 @@ export default function CallPage(){
     return (
         <div
             ref={containerRef}
-            className={'w-full h-full'}
+            className={'w-screen h-screen'}
         />
     )
 }
