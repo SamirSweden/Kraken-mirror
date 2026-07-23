@@ -3,14 +3,15 @@
 import Image from "next/image";
 
 import RyanImg from "@/app/assets/ryan.jpg"
+import UserCard from "@/app/components/UserCard";
 
 
 const Profile = () => {
     return (
         <>
-            <section className={'py-10'}>
-                <div className="container">
-                    <div className="grid grid-cols-1 md:grid-cols-[70%_30%] gap-4 rounded-2xl">
+            <section className={'py-10 select-none '}>
+                <div className="container relative">
+                    <div className="grid grid-cols-1 md:grid-cols-[70%_30%] gap-4 rounded-2xl ">
                         <div className="bg-[#111] py-4 px-5 rounded-xl">
                             <span className={'text-white text-lg font-semibold'}>s.azimovs</span>
                             <div className="followers mt-3 mb-4 flex items-center gap-5">
@@ -28,13 +29,14 @@ const Profile = () => {
                                 <span className={'username text-white text-sm capitalize '}>cute</span>
                                 <span>Vienna, Austria</span>
                             </div>
-                            <div className={'flex items-start gap-5  justify-start sub_content mt-4'}>
-                                <button className={'sub_btn text-white cursor-pointer hover:bg-blue-400 py-2 px-4 bg-blue-600 rounded-lg text-center text-sm capitalize outline-none border-none'}>
-                                    subscribe
-                                </button>
-                                <button className={'sub_btn text-white cursor-pointer hover:bg-[#525252] py-2 px-4 bg-[#111] rounded-lg text-center text-sm capitalize outline-none border-none'}>
-                                    send message
-                                </button>
+                            <div className={'flex items-start gap-5  justify-start sub_content mt-4 '}>
+                                <UserCard />
+                            </div>
+
+                            <div className={'flex items-center gap-2 absolute bottom-[-30]  '}>
+                                <span className={'text-sm text-gray-400 capitalize '}>Status</span>
+                                &mdash;
+                                <p className={'text-sm text-white lowercase'}>unavailable</p>
                             </div>
                         </div>
                         <div className="photo w-full">
@@ -68,3 +70,7 @@ const Profile = () => {
 
 
 export default Profile
+
+// 1923001453  AppID
+
+//ServerSecret 236fc79e937aaa30f14709e3b76c3a42
