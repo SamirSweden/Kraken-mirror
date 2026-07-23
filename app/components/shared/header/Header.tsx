@@ -41,7 +41,7 @@ const Header = () => {
                             font-mono
                         "
                     >
-                        Kraken
+                        SXGram
                     </Link>
 
                     <nav className="hidden md:flex items-center gap-2 py-2  shadow-[inset_4px_4px_20px_0_hsla(0,0%,100%,.15)] rounded-4xl  ">
