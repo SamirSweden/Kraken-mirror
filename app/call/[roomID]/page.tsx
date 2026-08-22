@@ -3,6 +3,7 @@
 
 import { useEffect, useRef } from "react";
 import { useParams } from "next/navigation";
+import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 
 
 export default function CallPage(){
@@ -10,49 +11,41 @@ export default function CallPage(){
     const params = useParams();
 
     useEffect(()=>{
-        const init = async () => {
-            const {ZegoUIKitPrebuilt } = await import("@zegocloud/zego-uikit-prebuilt");
+        const init = async () => {}
+            const roomID = params.roomID as string;
+            const appID = 1923001453
+            const serverSecret  = "236fc79e937aaa30f14709e3b76c3a42"
 
-            if(!containerRef.current) return;
+            const userID = "user" + Math.random().toString(36).substring(2, 10);
+            const userName  = "Ryan";
 
-            const appId = Number(process.env.NEXT_PUBLIC_ZEGO_APP_ID)
-            const serverSecret = process.env.NEXT_PUBLIC_ZEGO_SERVER_SECRET!;
+            const kitToken =
+                ZegoUIKitPrebuilt.generateKitTokenForTest(
+                    appID,
+                    serverSecret,
+                    roomID,
+                    userID,
+                    userName
+                );
 
-            // const roomID = params.roomID as string;
-          
+                const zp = ZegoUIKitPrebuilt.create(kitToken);
 
-            const roomID = "samir";
-            const userID = crypto.randomUUID();
-
-            const userName = `User_${userID.substring(0, 5)}`;
-
-            const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-                appId,
-                serverSecret,
-                roomID,
-                userID,
-                userName
-            )
-
-            const zp = ZegoUIKitPrebuilt.create(kitToken)
+            if (!containerRef.current) return;
 
             zp.joinRoom({
                 container: containerRef.current,
 
-                scenario:{
-                    mode: ZegoUIKitPrebuilt.OneONoneCall
+                scenario: {
+                    mode: ZegoUIKitPrebuilt.GroupCall,
                 },
 
-                turnOnCameraWhenJoining: false,
-                turnOnMicrophoneWhenJoining: true,
-                showMyCameraToggleButton: false,
                 showScreenSharingButton: false,
-                sharedLinks: [],
-            })
-        }
+                showTextChat: false,
+                showUserList: false,
+            });
 
-        init();
-    },[params])
+
+    },[params.roomID])
 
 
     return (

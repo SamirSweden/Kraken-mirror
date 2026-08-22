@@ -9,6 +9,7 @@ import { Menu, X } from "lucide-react";
 const navItems = [
     { title: "Check-list", path: "/checklist" },
     { title: "careers", path: "/careers" },
+    { title: "login", path: "/login" },
 ];
 
 const Header = () => {

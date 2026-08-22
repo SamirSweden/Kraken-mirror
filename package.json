@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@stomp/stompjs": "^7.3.0",
+    "@supabase/supabase-js": "^2.112.3",
     "@upstash/redis": "^1.38.0",
     "@zegocloud/zego-uikit-prebuilt": "^2.18.0",
     "ky": "^1.14.3",
