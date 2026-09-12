@@ -8,8 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
     { title: "Check-list", path: "/checklist" },
-    { title: "careers", path: "/careers" },
-    { title: "login", path: "/login" },
+    { title: "tokens", path: "/tokens" },
 ];
 
 const Header = () => {
@@ -36,13 +35,13 @@ const Header = () => {
                         href="/"
                         className="
                             text-2xl
-                            font-black
+
                             tracking-wide
                             text-white
-                            font-mono
+                            font-medium
                         "
                     >
-                        SXGram
+                        Elite
                     </Link>
 
                     <nav className="hidden md:flex items-center gap-2 py-2  shadow-[inset_4px_4px_20px_0_hsla(0,0%,100%,.15)] rounded-4xl  ">
@@ -67,11 +66,11 @@ const Header = () => {
                     <div className="flex items-center gap-3">
 
                         <button  
-                            onClick={() => router.push('/sx')}
+                            onClick={() => router.push('/login')}
                         className={`
-                            bg-[#15181f] text-white font-mono py-2 px-6 rounded-2xl cursor-pointer max-[430px]:hidden
+                            bg-white text-black font-mono py-3 px-7 rounded-4xl cursor-pointer max-[430px]:hidden
                         `}>
-                            sx
+                            Login
                         </button>
 
                         <button
