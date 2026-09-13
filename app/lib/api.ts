@@ -6,7 +6,7 @@ type RequestOptions = RequestInit & {
     json?:  unknown;
 }
 
-export async function api <T = any>
+export async function api <T = unknown>
 (
     endpoint: string,
     options: RequestOptions = {}
@@ -31,11 +31,6 @@ export async function api <T = any>
 
     return res.json()
 }
-
-
-
-
-
 
 
 

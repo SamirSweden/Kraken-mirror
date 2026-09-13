@@ -9,7 +9,6 @@ const CheckList = () => {
             <main className={`bg-black min-h-screen overflow-hidden`}>
                 <CheckText />
                 <BannerCoin />
-
                 <ProtectedPage />
             </main>
         </>
