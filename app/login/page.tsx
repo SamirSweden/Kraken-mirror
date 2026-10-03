@@ -22,7 +22,7 @@ const Login = () => {
         const endpoint = isRegister ? "/auth/register" : "/auth/login";
 
         try {
-            const res = await fetch(`${API_URL}/${endpoint}`, {
+            const res = await fetch(`${API_URL}${endpoint}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
