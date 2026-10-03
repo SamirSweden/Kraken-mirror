@@ -4,7 +4,7 @@
 import {useState , FormEvent} from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = "https://api-for-the-crypto-app.vercel.app";
 
 const Login = () => {
     const router = useRouter();
