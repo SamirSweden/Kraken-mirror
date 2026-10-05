@@ -4,7 +4,7 @@
 import {useState , FormEvent} from "react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "https://api-for-the-crypto-app.vercel.app";
+const API_URL_PYTHON = "https://api-for-the-crypto-app.vercel.app";
 
 const Login = () => {
     const router = useRouter();
@@ -22,7 +22,7 @@ const Login = () => {
         const endpoint = isRegister ? "/auth/register" : "/auth/login";
 
         try {
-            const res = await fetch(`${API_URL}${endpoint}`, {
+            const res = await fetch(`${API_URL_PYTHON}${endpoint}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
