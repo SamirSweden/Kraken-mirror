@@ -33,9 +33,14 @@ const Login = () => {
             });
 
             const data = await res.json();
-            if (!res.ok)
-                throw new Error("Failed to login");
-            router.push("/")
+            if(!res.ok){
+                throw new Error("Authentication failed");
+            }
+
+            localStorage.setItem("email", email);
+            router.push("/");
+
+
         }catch (err){
             setError("auth error")
         }finally {
