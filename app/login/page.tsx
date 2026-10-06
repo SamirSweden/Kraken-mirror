@@ -35,7 +35,7 @@ const Login = () => {
             const data = await res.json();
             if (!res.ok)
                 throw new Error("Failed to login");
-            router.push("/login")
+            router.push("/")
         }catch (err){
             setError("auth error")
         }finally {
