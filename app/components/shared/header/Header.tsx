@@ -17,7 +17,7 @@ const Header = () => {
     const router = useRouter()
 
     return (
-        <header className="bg-black w-full z-50 px-4    shadow-md  max-[500px]:mt-3">
+        <header className="bg-transparent! w-full z-50 px-4    shadow-md  max-[500px]:mt-3">
             <div className="max-w-7xl px-4  mx-auto w-full h-full">
 
                 <div
@@ -66,7 +66,7 @@ const Header = () => {
                     <div className="flex items-center gap-3">
 
                         <button  
-                            onClick={() => router.push('/login')}
+                            onClick={() => router.push('/auth')}
                         className={`
                             bg-white text-black font-mono py-3 px-7 rounded-4xl cursor-pointer max-[430px]:hidden
                         `}>

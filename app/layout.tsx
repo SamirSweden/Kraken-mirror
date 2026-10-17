@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SXGram",
-  description: "voice calling with Ryan",
+  title: "Для Хайлин💕",
+  description: "фразы и слова на уровне носителей для лучшей принцессы",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black">
+      <body className="min-h-full flex flex-col ">
           {children}
       </body>
     </html>

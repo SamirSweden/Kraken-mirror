@@ -1,3 +1,4 @@
+import Header from "../components/shared/header/Header";
 
 export default function PanelLayout({
   children,
@@ -8,6 +9,7 @@ export default function PanelLayout({
 
   return (
     <>
+    <Header />
       {children}
     </>
   );

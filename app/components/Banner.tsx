@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <>
          <div className={`section `}>
-            banner soon 
+
          </div>
         </>
     )

@@ -3,26 +3,17 @@
 import { useEffect, useState } from "react";
 
 export default function PanelPage() {
-    const [email, setEmail] = useState("");
 
-    useEffect(() => {
-        const savedEmail = localStorage.getItem("email");
-
-        if (savedEmail) {
-            setEmail(savedEmail);
-        }
-    }, []);
 
     return (
-        <div className="p-8">
-            <h2 className="text-3xl font-bold">
-                Привет, {email} 👋
-            </h2>
+        <main className="min-h-screen p-6 text-white sm:p-10">
+            <h1 className="text-2xl font-bold sm:text-3xl">
 
-            <p className="mt-2 text-zinc-400">
-                Добро пожаловать в твой личный кабинет.
+            </h1>
+
+            <p className="mt-3 text-gray-400">
+                You are now on the panel page.
             </p>
-        </div>
+        </main>
     );
 }
-
