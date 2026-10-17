@@ -32,6 +32,10 @@ const Login = () => {
                 })
             })
 
+            if(username && password == ""){
+                toast.warning("set a username and password")
+            }
+
             const data = await  response.json()
             if (!response.ok){
                 toast.error("Login failed.")
@@ -69,7 +73,6 @@ const Login = () => {
                         id="username"
                         type="text"
                         autoComplete="username"
-                        required
                         minLength={3}
                         maxLength={30}
                         value={username}
@@ -90,7 +93,6 @@ const Login = () => {
                         id="password"
                         type="password"
                         autoComplete="new-password"
-                        required
                         minLength={8}
                         maxLength={128}
                         value={password}
@@ -112,7 +114,7 @@ const Login = () => {
 
                 <button
                     type="submit"
-                    disabled={loading}
+
                     className="w-full rounded-4xl bg-[#111] px-4 py-3
                                font-semibold text-gray-300 transition
                                hover:bg-black disabled:opacity-50 cursor-pointer outline-none border-none"
