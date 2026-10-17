@@ -15,6 +15,7 @@
     "@zegocloud/zego-uikit-prebuilt": "^2.18.0",
     "ky": "^1.14.3",
     "lucide-react": "^1.14.0",
+    "motion": "^14.3.0",
     "next": "^16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",

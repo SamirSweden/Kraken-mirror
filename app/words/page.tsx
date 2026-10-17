@@ -1,6 +1,10 @@
+
 import WordList from "@/app/words/WordList";
 import { words } from "@/data/words";
 import WordNavbar from "@/app/components/shared/header/WordNavbar";
+
+
+
 
 export const metadata = { title: "Для Хайлин💕" };
 

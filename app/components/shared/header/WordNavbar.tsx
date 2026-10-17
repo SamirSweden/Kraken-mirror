@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import {User} from "lucide-react";
 import Link from "next/link";
+import {useScroll, motion} from "motion/react";
 
 const WordNavbar = () => {
     const [isSticky, setSticky] = useState(false);
     const [username , setUsername] = useState("");
+
 
     useEffect(() => {
         const savedName = localStorage.getItem("username")

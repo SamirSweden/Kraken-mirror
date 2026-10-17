@@ -1,6 +1,9 @@
 "use client";
 
 import { useMemo, useState ,useEffect} from "react";
+import {motion} from "framer-motion";
+import {easeInOut} from "motion";
+
 
 type Pair = readonly [string, string];
 
@@ -67,34 +70,43 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
                     {filtered.map(([en, ru]) => {
                         const isCopied = copied === en;
                         return (
-                            <li key={en}>
-                                <button
-                                    onClick={() => copy(en)}
-                                    className={`group relative block w-full cursor-pointer overflow-hidden rounded-3xl border px-6 py-6
+                            <motion.li
+                                key={en}
+                                initial={{opacity:100,y:200}}
+                                whileInView={{opacity:1,y:0}}
+                                viewport={{once:true, amount:0.1}}
+                                transition={{
+                                    duration:0.4,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                    <button
+                                        onClick={() => copy(en)}
+                                        className={`group relative block w-full cursor-pointer overflow-hidden rounded-3xl border px-6 py-6
                     backdrop-blur-xl transition duration-300 motion-reduce:transition-none
                     focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent
                     ${
-                                        isCopied
-                                            ? "border-accent/60 bg-accent/10 shadow-[0_0_40px_-8px_rgba(201,184,255,0.45)]"
-                                            : "border-white/10 bg-white/[0.04] shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.08]"
-                                    }`}
-                                >
+                                            isCopied
+                                                ? "border-accent/60 bg-accent/10 shadow-[0_0_40px_-8px_rgba(201,184,255,0.45)]"
+                                                : "border-white/10 bg-white/[0.04] shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.08]"
+                                        }`}
+                                    >
                                     <span
                                         aria-hidden
                                         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-60"
                                     />
-                                    <span
-                                        className={`block text-[clamp(1.4rem,4.5vw,1.9rem)] font-medium leading-tight tracking-tight transition-colors ${
-                                            isCopied ? "text-accent" : "text-ink"
-                                        }`}
-                                    >
+                                        <span
+                                            className={`block text-[clamp(1.4rem,4.5vw,1.9rem)] font-medium leading-tight tracking-tight transition-colors ${
+                                                isCopied ? "text-accent" : "text-ink"
+                                            }`}
+                                        >
                     {en}
                   </span>
-                                    <span className="mt-2 block text-[17px] leading-snug text-mute transition-colors group-hover:text-zinc-300">
+                                        <span className="mt-2 block text-[17px] leading-snug text-mute transition-colors group-hover:text-zinc-300">
                     {isCopied ? "Скопировано" : ru}
                   </span>
-                                </button>
-                            </li>
+                                    </button>
+                            </motion.li>
                         );
                     })}
                 </ul>
