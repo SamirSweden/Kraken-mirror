@@ -1,9 +1,11 @@
 "use client";
-import { useMemo, useState } from "react";
+
+import { useMemo, useState ,useEffect} from "react";
 
 type Pair = readonly [string, string];
 
 export default function WordList({ words }: { words: readonly Pair[] }) {
+    const [placeholderIndex, setPlaceholderIndex] = useState<number>(0)
     const [q, setQ] = useState("");
     const [copied, setCopied] = useState<string | null>(null);
 
@@ -22,6 +24,21 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
         setTimeout(() => setCopied(null), 1200);
     }
 
+    const placeholders: string[] = [
+        "все для Хайлин",
+        "Сьем тебя",
+        "Поиск по английскому или русскому",
+        "Поищи слова",
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPlaceholderIndex((prev) => (prev + 1) % placeholders.length)
+        },1500)
+
+        return () => clearInterval(interval)
+    },[]);
+
     return (
         <>
             <div className="sticky top-4 z-20">
@@ -29,7 +46,7 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
                     type="search"
                     value={q}
                     onChange={(e) => setQ(e.target.value)}
-                    placeholder="Поиск по английскому или русскому"
+                    placeholder={placeholders[placeholderIndex]}
                     aria-label="Поиск"
                     className="w-full rounded-full border border-white/10 bg-white/[0.06] px-6 py-4 text-center text-lg
                      text-ink shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition
