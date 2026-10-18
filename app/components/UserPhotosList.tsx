@@ -12,13 +12,19 @@ export default  function UserPhotosList(){
     const router = useRouter()
     const [nickname, setNickname] = useState("")
     const [authorized, setAuthorized] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            toast.dark("Ryan Loves you")
+        },500)
 
+        return () => clearTimeout(timer)
+    }, []);
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
 
         if(nickname.trim() === "Haylin"){
             setAuthorized(true)
-            toast.success("Successfully authorized!")
+            toast.success("Hello " + nickname)
             router.push("/azimov");
         } else if(nickname.trim().toLowerCase() === ""){
             toast.info("Please write nickname!")
@@ -27,7 +33,11 @@ export default  function UserPhotosList(){
             toast.error("Вход запрещен");
             router.replace("/words");
         }
+
+
     }
+
+
 
     if(!authorized){
         return <>
