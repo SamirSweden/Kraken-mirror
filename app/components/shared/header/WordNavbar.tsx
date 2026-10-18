@@ -39,7 +39,7 @@ const WordNavbar = () => {
             }`}>
                 <div className="container max-w-2xl mx-auto px-4 w-full h-full ">
                     <div className="flex items-center justify-around  rounded-3xl p-2.5 w-full">
-                        <h1 className={'text-white font-bold tracking-tight animate-pulse max-[340px]:text-sm'}>Принцессе Хайлин💕</h1>
+                        <Link href={'/'} className={'text-white cursor-pointer font-bold tracking-tight animate-pulse max-[340px]:text-sm'}>Принцессе Хайлин💕</Link>
                         <div className="flex items-center gap-2">
                             <button onClick={() => router.push("/azimov")} className={'max-[340px]:text-sm px-3 py-1.5 text-black text-sm bg-white rounded-full cursor-pointer hover:bg-white/35'}>Ryan</button>
                             {username ?(
