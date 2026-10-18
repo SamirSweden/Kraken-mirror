@@ -16,13 +16,14 @@ export default  function UserPhotosList(){
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
 
-        if(nickname.trim().toLowerCase() === "Haylin"){
+        if(nickname.trim() === "Haylin"){
             setAuthorized(true)
             toast.success("Successfully authorized!")
-        } else if(nickname == ""){
+            router.push("/azimov");
+        } else if(nickname.trim().toLowerCase() === ""){
             toast.info("Please write nickname!")
         }
-        else{
+        else if(nickname != "Haylin"){
             toast.error("Вход запрещен");
             router.replace("/words");
         }
