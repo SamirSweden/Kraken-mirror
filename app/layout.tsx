@@ -34,7 +34,7 @@ export default function RootLayout({
 
           <ToastContainer
               position={'bottom-right'}
-              autoClose={2000}
+              autoClose={3000}
               theme={'dark'}
           />
       </body>

@@ -2,27 +2,59 @@
 
 import { useMemo, useState ,useEffect} from "react";
 import {motion} from "framer-motion";
-import {easeInOut} from "motion";
+import {toast} from "react-toastify";
 
+type Pair = readonly [string, string, string?];
+const NEW_DAYS = 7;
 
-type Pair = readonly [string, string];
+function isNew(addedAt?: string){
+    if(!addedAt) return false;
+    const days = (Date.now() - new Date(addedAt).getTime()) / 86_400_000;
+    return days>=0 && days <= NEW_DAYS;
+}
 
 export default function WordList({ words }: { words: readonly Pair[] }) {
     const [placeholderIndex, setPlaceholderIndex] = useState<number>(0)
     const [q, setQ] = useState("");
     const [copied, setCopied] = useState<string | null>(null);
 
+
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            toast.dark("Samir loves you💕",{icon: <span className={'text-2xl'}>🫦</span>})
+        })
+        return () => clearTimeout(timer)
+    }, []);
+
+
+
+
     const filtered = useMemo(() => {
         const s = q.trim().toLowerCase();
-        return s
-            ? words.filter(([en, ru]) => (en + " " + ru).toLowerCase().includes(s))
-            : words;
-    }, [q, words]);
 
-    async function copy(en: string) {
+        const list = s
+        ? words.filter(([en,ru]) => (en + " " + ru).toLowerCase().includes(s))
+            : [...words];
+
+        return list.sort(([, , a,], [, , b]) => {
+            const aNew = isNew(a);
+            const bNew = isNew(b);
+
+            if(aNew && !bNew) return -1;
+            if(!aNew && bNew) return 1;
+
+            if(aNew && bNew){
+                return new Date(b!).getTime() - new Date(a!).getTime();
+            }
+            return 0;
+        })
+    },[q, words])
+
+    async function copy(en:string){
         try {
             await navigator.clipboard.writeText(en);
-        } catch {}
+        }catch {}
         setCopied(en);
         setTimeout(() => setCopied(null), 1200);
     }
@@ -67,12 +99,14 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
                 </p>
             ) : (
                 <ul className="m-0 flex list-none flex-col gap-3 p-0">
-                    {filtered.map(([en, ru]) => {
+                    {filtered.map(([en, ru, addedAt]) => {
                         const isCopied = copied === en;
+                        const isNewWord = isNew(addedAt);
+
                         return (
                             <motion.li
                                 key={en}
-                                initial={{opacity:100,y:200}}
+                                initial={{opacity:0,y:200}}
                                 whileInView={{opacity:1,y:0}}
                                 viewport={{once:true, amount:0.1}}
                                 transition={{
@@ -84,7 +118,7 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
                                         onClick={() => copy(en)}
                                         className={`group relative block w-full cursor-pointer overflow-hidden rounded-3xl border px-6 py-6
                     backdrop-blur-xl transition duration-300 motion-reduce:transition-none
-                    focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent
+                    focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent 
                     ${
                                             isCopied
                                                 ? "border-accent/60 bg-accent/10 shadow-[0_0_40px_-8px_rgba(201,184,255,0.45)]"
@@ -95,16 +129,23 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
                                         aria-hidden
                                         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-60"
                                     />
+                                        {isNewWord && (
+                                            <span className="absolute -right-1 top-0.5 rotate-7 rounded-full bg-zinc-950 backdrop-blur-3xl border border-white/45 px-2.5 py-0.5
+                                                     text-xs font-bold uppercase tracking-wider text-accent">
+                                                New
+                                            </span>
+                                        )}
+
                                         <span
                                             className={`block text-[clamp(1.4rem,4.5vw,1.9rem)] font-medium leading-tight tracking-tight transition-colors ${
                                                 isCopied ? "text-accent" : "text-ink"
                                             }`}
                                         >
-                    {en}
-                  </span>
+                                            {en}
+                                        </span>
                                         <span className="mt-2 block text-[17px] leading-snug text-mute transition-colors group-hover:text-zinc-300">
-                    {isCopied ? "Скопировано" : ru}
-                  </span>
+                                            {isCopied ? "Скопировано" : ru}
+                                        </span>
                                     </button>
                             </motion.li>
                         );
