@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Для Хайлин💕",
-  description: "фразы и слова на уровне носителей для лучшей принцессы",
+  description: "фразы и слова на уровне носителей для лучшей принцессы и красавицы",
 };
 
 export default function RootLayout({
