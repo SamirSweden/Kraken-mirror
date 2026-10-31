@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import {User} from "lucide-react";
 import Link from "next/link";
-import {useScroll, motion} from "motion/react";
 import {useRouter} from "next/navigation";
 
 const WordNavbar = () => {
