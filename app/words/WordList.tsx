@@ -26,26 +26,7 @@ export default function WordList({ words }: { words: readonly Pair[] }) {
         })
         return () => clearTimeout(timer)
     }, []);
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            toast.dark("Сегодня я тебя")
-        },1000)
-        return () => clearTimeout(timer)
-    }, []);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            toast.dark("Покусаю 500тыс раз 😋")
-        },2000)
-        return () => clearTimeout(timer)
-    }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            toast.dark("happy halloween! 😋")
-        },3000)
-        return () => clearTimeout(timer)
-    }, []);
 
 
 
