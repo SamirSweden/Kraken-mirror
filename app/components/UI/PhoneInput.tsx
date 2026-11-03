@@ -21,7 +21,7 @@ const PhoneInput = () => {
             setLoading(true);
 
             const {data} = await axios.post(
-                "http://127.0.0.1:8000/api/phone",
+                "https://api-for-the-crypto-app.vercel.app/api/phone",
                 {phone: cleanPhone},
                 {timeout: 1000}
             );
