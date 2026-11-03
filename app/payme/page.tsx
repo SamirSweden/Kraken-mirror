@@ -1,6 +1,7 @@
 import PaymeNavbar from "@/app/components/shared/header/PaymeNavbar";
 import BannerPayme from "@/app/components/shared/banners/BannerPayme";
 import InstallApps from "@/app/components/shared/banners/InstallApps";
+import BannerPayment from "@/app/components/shared/banners/BannerPayment";
 
 
 const PaymePage = () => {
@@ -9,6 +10,7 @@ const PaymePage = () => {
             <PaymeNavbar />
             <BannerPayme />
             <InstallApps />
+            <BannerPayment />
         </div>
     </>
 }
